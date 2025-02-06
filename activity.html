@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Navigation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            grid-template-columns: 250px 1fr;
+            grid-template-areas: 
+                "header header"
+                "sidebar main"
+                "footer footer";
+            height: 100vh;
+        }
+        header {
+            grid-area: header;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+        nav {
+            grid-area: sidebar;
+            background-color: #444;
+            padding: 1rem;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 15px 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: block;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        nav ul li a:hover {
+            background-color: #666;
+            transform: scale(1.05);
+        }
+        .ramadan-table {
+            background-color: #17A2B8;
+        }
+        .school-bag {
+            background-color: #FFBC45;
+        }
+        .projects {
+            background-color: #893030;
+        }
+        .solid-income {
+            background-color: #703838;
+        }
+        .conveyance {
+            background-color: #20C997;
+        }
+        .ramadan-bag {
+            background-color: #00AD6F;
+        }
+        .training-office {
+            background-color: #800080;
+        }
+        .eids-clothing {
+            background-color: #F27163;
+        }
+        .winter-clothing {
+            background-color: #FDB853;
+        }
+        .team-week {
+            background-color: #ED7DC0;
+        }
+        main {
+            grid-area: main;
+            padding: 2rem;
+            background-color: #ffffff;
+            overflow-y: auto;
+        }
+        main h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        main p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        footer {
+            grid-area: footer;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Activity Page</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a class="ramadan-table" href="ramadan-table.html">المائدة الرمضانية</a></li>
+            <li><a class="school-bag" href="school-bag.html">الحقيبة المدرسية</a></li>
+            <li><a class="projects" href="projects.html">لجنة المشاريع</a></li>
+            <li><a class="solid-income" href="solid-income.html">الدخل الثابت</a></li>
+            <li><a class="conveyance" href="conveyance.html">لجنة القوافل</a></li>
+            <li><a class="ramadan-bag" href="ramadan-bag.html">الحقيبة الرمضانية</a></li>
+            <li><a class="training-office" href="training-office.html">مكتب التدريب</a></li>
+            <li><a class="eids-clothing" href="eids-clothing.html">كسوة عيد الفطر وعيد الأضحى</a></li>
+            <li><a class="winter-clothing" href="winter-clothing.html">كسوة شتاء</a></li>
+            <li><a class="team-week" href="team-week.html">لجنة أسبوع تيم</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>About This Page</h2>
+        <p>
+            This page is designed to provide easy navigation to various activities and committees. Each section is highlighted with its unique color, providing a visually distinct and organized experience.
+        </p>
+        <p>
+            Use the sidebar to explore specific categories such as the Ramadan Table, School Bag, and Winter Clothing. Each link will lead you to more detailed information about the activity.
+        </p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Activity Navigation. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,351 @@
+/* General Styles */
+body {
+    font-family: 'Tajawal', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #343a40;
+    line-height: 1.6;
+}
+
+header {
+    background: url('images/hayatUofG.jpg') no-repeat center center/cover;
+    height: 370px; /* يمكنك تعديل الارتفاع حسب الحاجة */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    color: #fff; /* لتعديل لون النصوص إذا كانت الصورة غامقة */
+    text-align: center;
+}
+
+
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    padding: 15px;
+}
+
+nav button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #d3d3d3, #808080);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3 ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+nav button:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #c0c0c0, #696969);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+nav button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(128, 128, 128, 0.5);
+}
+
+nav button.btn-primary {
+    border-color: #007bff;
+}
+
+nav button.btn-success {
+    border-color: #28a745;
+}
+
+nav button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    background: url('images/hero-bg.jpg') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    text-align: center;
+}
+
+.contener {
+    width: 100%;
+    overflow: hidden; /* Hide overflow to ensure a clean scrolling effect */
+    white-space: nowrap; /* Prevent text wrapping */
+    position: relative; /* Ensure proper positioning for child elements */
+}
+
+.scrolling-text {
+    display: inline-block; /* Ensures the text stays on one line */
+    white-space: nowrap; /* Prevents text from wrapping */
+    animation: scrollText 30s linear infinite; /* Animation to scroll the text */
+    font-size: 1.5rem; /* Adjust text size */
+    padding: 10px 0; /* Add spacing */
+}
+
+/* Keyframes for scrolling animation */
+@keyframes scrollText {
+    from {
+        transform: translateX(-100%); /* Start off-screen to the right */
+    }
+    to {
+        transform: translateX(100%); /* End off-screen to the left */
+    }
+}
+
+.video-container {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin: 30px auto; /* Add spacing around the video container */
+    padding: 20px; /* Add padding around the iframe for better aesthetics */
+    background-color: #f8f9fa; /* Light background for contrast */
+    border-radius: 10px; /* Rounded edges for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better look */
+    max-width: 800px; /* Limit the maximum width of the container */
+}
+
+.video-container iframe {
+    width: 100%; /* Make the iframe responsive to container width */
+    max-width: 700px; /* Set a maximum width for the video */
+    height: 400px; /* Define a height for the video */
+    border: none; /* Remove default iframe border */
+    border-radius: 10px; /* Add rounded corners to the video */
+}
+
+.hidden {
+    display: none; /* Initially hide the text */
+}
+
+#animated-text {
+    margin: 30px auto;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #343a40;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Hide text until animation starts */
+}
+
+/* Letter-by-letter animation */
+#animated-text span {
+    display: inline-block;
+    opacity: 0; /* Start with hidden text */
+    transform: translateY(20px); /* Move text slightly downward */
+    animation: fadeInLetter 0.5s ease forwards;
+}
+
+@keyframes fadeInLetter {
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Bring text back to its position */
+    }
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.hero .btn {
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    border-radius: 50px;
+}
+
+/* Carousel Styles */
+.carousel {
+    margin: 20px auto;
+    max-width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel img {
+    object-fit: cover;
+    height: 600px;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+}
+
+/* Buttons inside carousel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+/* Mission Section */
+.mission {
+    padding: 50px 20px;
+    background-color: #e9ecef;
+    text-align: center;
+}
+
+.mission h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.mission p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.8;
+}
+
+/* Footer Section */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer .social-icons {
+    margin-top: 15px;
+}
+
+footer .social-icons a {
+    margin: 0 10px;
+    font-size: 1.8rem;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ألوان الأيقونات */
+.fa-whatsapp {
+    color: #25D366;
+}
+.fa-whatsapp:hover {
+    color: #1DA851;
+}
+
+.fa-facebook {
+    color: #1877F2;
+}
+.fa-facebook:hover {
+    color: #145DBF;
+}
+
+.fa-instagram {
+    color: #E1306C;
+}
+.fa-instagram:hover {
+    color: #B7245C;
+}
+
+
+
+.fa-linkedin {
+    color: #0077B5;
+}
+.fa-linkedin:hover {
+    color: #005A89;
+}
+
+.fa-telegram {
+    color: #0088cc;
+}
+.fa-telegram:hover {
+    color: #005f99;
+}
+
+
+
+/* تنسيق الرابط الذي يحتوي على الأيقونة */
+.x-icon-link {
+     
+    bottom: 20px; /* المسافة من الأسفل */
+    right: 20px; /* المسافة من اليمين */
+    z-index: 1000; /* للتأكد من أنها فوق باقي العناصر */
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* تنسيق الأيقونة */
+.x-icon {
+    width: 50px; /* عرض الأيقونة */
+    height: 50px; /* ارتفاع الأيقونة */
+    border-radius: 50%; /* لتكون الأيقونة دائرية */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* ظل للأيقونة */
+    object-fit: cover; /* يضمن تناسب الصورة داخل العنصر */
+    cursor: pointer;
+}
+
+/* تأثير عند التمرير فوق الأيقونة */
+.x-icon-link:hover .x-icon {
+    transform: scale(1.1); /* تكبير الأيقونة قليلاً */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* تحسين الظل */
+}
+
+
+
+
+
+   
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header nav button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .carousel img {
+        height: 400px;
+    }
+
+    .carousel-caption {
+        font-size: 0.9rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+}

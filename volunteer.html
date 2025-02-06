@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التطوع - جمعية حياة الخيرية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="volunteer.css">
+    <link rel="icon" href="images/hayaicon.png">
+</head>
+
+<body>
+    <header class="bg-primary text-white text-center py-5">
+        <h1>فرصة التطوع</h1>
+        <p>كن جزءًا من التغيير الإيجابي وشارك في دعم مجتمعك.</p>
+    </header>
+
+    <section class="container my-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2>لماذا التطوع معنا؟</h2>
+                <p>نحن نؤمن بأن العمل التطوعي هو وسيلة رائعة للمساهمة في تحسين الحياة وتعزيز التنمية المستدامة. من خلال التطوع معنا، ستتاح لك الفرصة لاكتساب خبرات جديدة والعمل مع فريق متميز لتحقيق الأثر الإيجابي.</p>
+                <ul>
+                    <li>تعزيز مهاراتك الشخصية والمهنية</li>
+                    <li>المساهمة في خدمة المجتمع</li>
+                    <li>العمل ضمن بيئة تعاونية وداعمة</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <img src="images/volunteer.jpg" alt="التطوع" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">فرص التطوع</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow h-100">
+                        <img src="images/event.jpg" class="card-img-top" alt="تنظيم الفعاليات">
+                        <div class="card-body">
+                            <h5 class="card-title">تنظيم الفعاليات</h5>
+                            <p class="card-text">ساعدنا في تنظيم فعالياتنا الخيرية لنشر رسالتنا وتحقيق أهدافنا.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow h-100">
+                        <img src="images/education.jpg" class="card-img-top" alt="الدعم التعليمي">
+                        <div class="card-body">
+                            <h5 class="card-title">الدعم التعليمي</h5>
+                            <p class="card-text">شارك في تقديم الدروس أو الورش التعليمية للأطفال والشباب.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow h-100">
+                        <img src="images/community.jpg" class="card-img-top" alt="خدمة المجتمع">
+                        <div class="card-body">
+                            <h5 class="card-title">خدمة المجتمع</h5>
+                            <p class="card-text">كن جزءًا من فريق يقدم خدمات مباشرة للمجتمع المحتاج.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container my-5">
+        <h2 class="text-center mb-4">سجل كمتطوع</h2>
+        <form action="submit_volunteer.php" method="POST" class="row g-3">
+            <div class="col-md-6">
+                <label for="name" class="form-label">الاسم الكامل</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="col-md-6">
+                <label for="email" class="form-label">البريد الإلكتروني</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="col-md-6">
+                <label for="phone" class="form-label">رقم الهاتف</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="col-md-6">
+                <label for="field" class="form-label">مجال التطوع</label>
+                <select id="field" name="field" class="form-select" required>
+                    <option value="">اختر مجالاً...</option>
+                    <option value="تنظيم الفعاليات">تنظيم الفعاليات</option>
+                    <option value="الدعم التعليمي">الدعم التعليمي</option>
+                    <option value="خدمة المجتمع">خدمة المجتمع</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <label for="message" class="form-label">رسالة أو اقتراح</label>
+                <textarea id="message" name="message" rows="4" class="form-control"></textarea>
+            </div>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">إرسال</button>
+            </div>
+        </form>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2025 جمعية حياة الخيرية. جميع الحقوق محفوظة.</p>
+        <p>للتواصل: <a href="mailto:info@hayat.org" class="text-light">info@hayat.org</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
