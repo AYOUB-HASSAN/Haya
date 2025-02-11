@@ -5,26 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
+        }
+
+        body {
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
 
+        /* Chatbot Toggle Button */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #0078ff;
+            color: white;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-size: 24px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .chatbot-toggle:hover {
+            background: #0056c7;
+            transform: scale(1.1);
+        }
+
         /* Chatbot Container */
         .chatbot-container {
             position: fixed;
-            bottom: 20px;
+            bottom: 90px;
             right: 20px;
             width: 350px;
             max-height: 500px;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            transform: scale(0);
+            opacity: 0;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        .chatbot-container.active {
+            transform: scale(1);
+            opacity: 1;
         }
 
         /* Chat Header */
@@ -35,6 +71,15 @@
             text-align: center;
             font-size: 18px;
             font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            font-size: 20px;
+            cursor: pointer;
         }
 
         /* Chat Body */
@@ -43,10 +88,11 @@
             overflow-y: auto;
             flex-grow: 1;
             height: 300px;
+            background: #f9f9f9;
         }
 
         .message {
-            padding: 8px 12px;
+            padding: 10px;
             margin: 5px;
             border-radius: 10px;
             max-width: 75%;
@@ -58,6 +104,7 @@
             color: white;
             align-self: flex-end;
             text-align: right;
+            border-bottom-right-radius: 0;
         }
 
         .bot-message {
@@ -65,6 +112,7 @@
             color: black;
             align-self: flex-start;
             text-align: left;
+            border-bottom-left-radius: 0;
         }
 
         /* Chat Input */
@@ -92,6 +140,7 @@
             background: #0078ff;
             color: white;
             cursor: pointer;
+            transition: background 0.3s;
         }
 
         .chat-input button:hover {
@@ -101,30 +150,41 @@
 </head>
 <body>
 
+    <!-- Chatbot Toggle Button -->
+    <div class="chatbot-toggle" onclick="toggleChat()">💬</div>
+
     <!-- Chatbot -->
-    <div class="chatbot-container">
-        <div class="chat-header">AUE-Chatbot</div>
+    <div class="chatbot-container" id="chatbot">
+        <div class="chat-header" onclick="toggleChat()">
+            AUE-Chatbot ✨
+            <span class="close-btn">&times;</span>
+        </div>
         <div class="chat-body" id="chatBody"></div>
         <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Type a message...">
+            <input type="text" id="userInput" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
             <button onclick="sendMessage()">➤</button>
         </div>
     </div>
 
     <script>
+        function toggleChat() {
+            const chatbot = document.getElementById("chatbot");
+            chatbot.classList.toggle("active");
+        }
+
         function sendMessage() {
             let userInput = document.getElementById("userInput").value;
-            if (!userInput.trim()) return; // Ignore empty messages
+            if (!userInput.trim()) return;
 
-            // Display user message
             let chatBody = document.getElementById("chatBody");
+            
+            // Display user message
             let userMessage = document.createElement("div");
             userMessage.classList.add("message", "user-message");
             userMessage.textContent = userInput;
             chatBody.appendChild(userMessage);
             document.getElementById("userInput").value = "";
 
-            // Scroll chat to the bottom
             chatBody.scrollTop = chatBody.scrollHeight;
 
             // Send user message to backend
@@ -144,12 +204,11 @@
             .catch(error => console.error("Error:", error));
         }
 
-        // Send message when Enter key is pressed
-        document.getElementById("userInput").addEventListener("keypress", function(event) {
+        function handleKeyPress(event) {
             if (event.key === "Enter") {
                 sendMessage();
             }
-        });
+        }
     </script>
 
 </body>
