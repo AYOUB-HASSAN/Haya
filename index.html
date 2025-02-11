@@ -11,6 +11,149 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
 </head>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Chatbot Toggle Button */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #0078ff;
+            color: white;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-size: 24px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .chatbot-toggle:hover {
+            background: #0056c7;
+            transform: scale(1.1);
+        }
+
+        /* Chatbot Container */
+        .chatbot-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            max-height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0);
+            opacity: 0;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        .chatbot-container.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Chat Header */
+        .chat-header {
+            background: #0078ff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Chat Body */
+        .chat-body {
+            padding: 10px;
+            overflow-y: auto;
+            flex-grow: 1;
+            height: 300px;
+            background: #f9f9f9;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 10px;
+            max-width: 75%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background: #0078ff;
+            color: white;
+            align-self: flex-end;
+            text-align: right;
+            border-bottom-right-radius: 0;
+        }
+
+        .bot-message {
+            background: #e0e0e0;
+            color: black;
+            align-self: flex-start;
+            text-align: left;
+            border-bottom-left-radius: 0;
+        }
+
+        /* Chat Input */
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background: white;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            background: #f0f0f0;
+        }
+
+        .chat-input button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 50%;
+            background: #0078ff;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .chat-input button:hover {
+            background: #0056c7;
+        }
+    </style>
 <body>
 
     
@@ -123,6 +266,67 @@
     </div>
 
 </footer>
+
+
+    <!-- Chatbot Toggle Button -->
+<div class="chatbot-toggle" onclick="toggleChat()">💬</div>
+
+<!-- Chatbot -->
+<div class="chatbot-container" id="chatbot">
+    <div class="chat-header" onclick="toggleChat()">
+        AUE-Chatbot ✨
+        <span class="close-btn">&times;</span>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="اكتب رسالة..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()">➤</button>
+    </div>
+</div>
+
+<script>
+    function toggleChat() {
+        const chatbot = document.getElementById("chatbot");
+        chatbot.classList.toggle("active");
+    }
+
+    function sendMessage() {
+        let userInput = document.getElementById("userInput").value;
+        if (!userInput.trim()) return;
+
+        let chatBody = document.getElementById("chatBody");
+
+        let userMessage = document.createElement("div");
+        userMessage.classList.add("message", "user-message");
+        userMessage.textContent = userInput;
+        chatBody.appendChild(userMessage);
+        document.getElementById("userInput").value = "";
+
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        fetch("https://your-flask-server.com/chat", {  // Replace with your Flask chatbot URL
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: userInput })
+        })
+        .then(response => response.json())
+        .then(data => {
+            let botMessage = document.createElement("div");
+            botMessage.classList.add("message", "bot-message");
+            botMessage.textContent = data.response;
+            chatBody.appendChild(botMessage);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        })
+        .catch(error => console.error("Error:", error));
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    }
+</script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
